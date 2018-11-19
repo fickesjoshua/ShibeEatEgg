@@ -5,22 +5,19 @@ using System.Collections.Generic;
 
 public class SaveAndLoad : MonoBehaviour {
 
-    bool testState = false;
-
+    
 	void Start () {
         Load();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (testState)
-        {
-            transform.Translate(Vector3.forward * Time.deltaTime);
-        }
-        if(Input.GetKey(KeyCode.UpArrow))
+        
+        /*if(Input.GetKey(KeyCode.UpArrow))
         {
             IncrementSaveState("eggCount");
-        } else if (Input.GetKey(KeyCode.H))
+        }*/
+        if (Input.GetKey(KeyCode.H))
         {
             Application.LoadLevel("BulletHellMinigame");
         }
@@ -51,10 +48,10 @@ public class SaveAndLoad : MonoBehaviour {
     }
     */
 
-        if (PlayerPrefs.GetInt("eggCount") >= 5)
+        /*if (PlayerPrefs.GetInt("eggCount") >= 5)
         {
             testState = true;
-        }
+        }*/
         for (int i = 0; i < PlayerPrefs.GetInt("eggCount"); i++)
         {
             transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);

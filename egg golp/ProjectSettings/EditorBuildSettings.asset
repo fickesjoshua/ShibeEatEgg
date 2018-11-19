@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestArea.unity
     guid: f54623fad8e92b84ca4c09090a7172b4
+  - enabled: 1
+    path: Assets/Scenes/BulletHellMinigame.unity
+    guid: c206ece4ba9045a42a43062121a78f5a
   m_configObjects: {}
