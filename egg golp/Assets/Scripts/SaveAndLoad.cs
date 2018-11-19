@@ -20,8 +20,12 @@ public class SaveAndLoad : MonoBehaviour {
         if(Input.GetKey(KeyCode.UpArrow))
         {
             IncrementSaveState("eggCount");
+        } else if (Input.GetKey(KeyCode.H))
+        {
+            Application.LoadLevel("BulletHellMinigame");
         }
-	}
+
+    }
 	
     public void Load()
     {
