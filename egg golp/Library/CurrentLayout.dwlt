@@ -290,7 +290,7 @@ MonoBehaviour:
   m_AnimEditor: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -226944
+  m_LastSelectedObjectID: 3150
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
