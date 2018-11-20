@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class BulletHellEggManager : MonoBehaviour {
 
-    float speed = 2.0f;
+    public float speed = 2.0f;
     
 	void Start () {
         IncrementSaveState("eggCount");
