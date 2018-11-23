@@ -5,8 +5,9 @@ using System.Collections.Generic;
 
 public class SaveAndLoad : MonoBehaviour {
 
-    
-	void Start () {
+    private bool alreadyHatched = false;
+
+    void Start () {
         Load();
 	}
 	
@@ -17,10 +18,22 @@ public class SaveAndLoad : MonoBehaviour {
         {
             IncrementSaveState("eggCount");
         }*/
-        if (Input.GetKey(KeyCode.H))
+        
+        if (Input.GetKey(KeyCode.N) && Input.GetKey(KeyCode.E) && Input.GetKey(KeyCode.W))
         {
-            Application.LoadLevel("BulletHellMinigame");
+            Application.LoadLevel("NewGame");
         }
+        if (Input.GetKey(KeyCode.B) && Input.GetKey(KeyCode.O) && Input.GetKey(KeyCode.P))
+        {
+            Debug.Log("owo");
+            for (int i = 0; i < 10; i++)
+            {
+                VisibleEggIncrease();
+            }
+        }
+
+
+        
 
     }
 	
@@ -48,14 +61,23 @@ public class SaveAndLoad : MonoBehaviour {
     }
     */
 
-        /*if (PlayerPrefs.GetInt("eggCount") >= 5)
+        if (PlayerPrefs.GetInt("eggCount") >= 100)
         {
-            testState = true;
-        }*/
+            GameObject itemToLoad = GameObject.Find("EggCharacter");
+            itemToLoad.SetActive(false);
+            alreadyHatched = true;
+        }
         for (int i = 0; i < PlayerPrefs.GetInt("eggCount"); i++)
         {
-            transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            if (PlayerPrefs.GetInt("eggCount") >= 100) //Once Shib has hatched, the increase in size needs to be a little more noticable.
+            {
+                transform.localScale += new Vector3(0.17f, 0.17f, 0.17f);
+            } else
+            {
+                transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            }
         }
+        Debug.Log(PlayerPrefs.GetInt("eggCount"));
         /*
         
         //Tell each of the objects to GameObject.SetActive
@@ -74,8 +96,8 @@ public class SaveAndLoad : MonoBehaviour {
         }
         */
 
-            //I think I have to comment out this line and put it and the whole name-game-so-declare-this-list-of-player-prefs thing in their own script to put in a menu.
-            // Application.LoadLevel(firstLevel);
+        //I think I have to comment out this line and put it and the whole name-game-so-declare-this-list-of-player-prefs thing in their own script to put in a menu.
+        // Application.LoadLevel(firstLevel);
     }
 
 
@@ -96,5 +118,32 @@ public class SaveAndLoad : MonoBehaviour {
     public int ReturnSaveState(string whatToSend)
     {
         return PlayerPrefs.GetInt(whatToSend);
+    }
+    
+    public void VisibleEggIncrease() //Use this to add an egg while in this scene.
+    {
+        //Do all the stuff that normally happens when you tally up eggs in the start of the program.
+        IncrementSaveState("eggCount");
+        if (PlayerPrefs.GetInt("eggCount") >= 100) //Once Shib has hatched, the increase in size needs to be a little more noticable.
+        {
+            transform.localScale += new Vector3(0.17f, 0.17f, 0.17f);
+        }
+        else
+        {
+            transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+        }
+        /*Vector3 newScale = transform.localScale;
+        newScale *= 1.023f;
+        transform.localScale = newScale;*/
+        if (alreadyHatched == false)
+        {
+            if (PlayerPrefs.GetInt("eggCount") >= 100)
+            {
+                GameObject itemToLoad = GameObject.Find("EggCharacter");
+                itemToLoad.SetActive(false);
+                alreadyHatched = true;
+            }
+        }
+        
     }
 }

@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BeginGame.cs" />
     <Compile Include="Assets\Scripts\BulletHellEggManager.cs" />
+    <Compile Include="Assets\Scripts\PictureTurn.cs" />
     <Compile Include="Assets\Scripts\SaveAndLoad.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/kokjo/OneDrive/Documents/GitHub/ShibeEatEgg/egg golp/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
