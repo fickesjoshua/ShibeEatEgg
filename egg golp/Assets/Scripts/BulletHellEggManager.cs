@@ -49,6 +49,8 @@ public class BulletHellEggManager : MonoBehaviour {
         if (collision.gameObject.tag == "point")  //I'm also adding the win condition check here since it's so similar to a death check.
         {
             IncrementSaveState("eggCount");
+            IncrementSaveState("eggCount");
+            IncrementSaveState("eggCount");
             Destroy(collision.gameObject);
         }
     }

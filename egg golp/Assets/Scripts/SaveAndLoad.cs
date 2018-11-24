@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class SaveAndLoad : MonoBehaviour {
 
     private bool alreadyHatched = false;
+    private int apparentEggCount = 0;
 
     void Start () {
         Load();
@@ -30,6 +31,12 @@ public class SaveAndLoad : MonoBehaviour {
             {
                 VisibleEggIncrease();
             }
+        }
+
+        if(apparentEggCount < PlayerPrefs.GetInt("eggCount"))
+        {
+            ResyncVisuals();
+            apparentEggCount++;
         }
 
 
@@ -61,7 +68,7 @@ public class SaveAndLoad : MonoBehaviour {
     }
     */
 
-        if (PlayerPrefs.GetInt("eggCount") >= 100)
+        if (PlayerPrefs.GetInt("eggCount") >= 200)
         {
             GameObject itemToLoad = GameObject.Find("EggCharacter");
             itemToLoad.SetActive(false);
@@ -69,15 +76,17 @@ public class SaveAndLoad : MonoBehaviour {
         }
         for (int i = 0; i < PlayerPrefs.GetInt("eggCount"); i++)
         {
-            if (PlayerPrefs.GetInt("eggCount") >= 100) //Once Shib has hatched, the increase in size needs to be a little more noticable.
+            if (PlayerPrefs.GetInt("eggCount") >= 200) //Once Shib has hatched, the increase in size needs to be a little more noticable.
             {
-                transform.localScale += new Vector3(0.17f, 0.17f, 0.17f);
+                transform.localScale += new Vector3(0.085f, 0.085f, 0.085f);
             } else
             {
-                transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+                transform.localScale += new Vector3(0.05f, 0.05f, 0.05f);
             }
         }
         Debug.Log(PlayerPrefs.GetInt("eggCount"));
+        apparentEggCount = PlayerPrefs.GetInt("eggCount");
+
         /*
         
         //Tell each of the objects to GameObject.SetActive
@@ -113,6 +122,7 @@ public class SaveAndLoad : MonoBehaviour {
         //Gets a name for what to update, and updates it to 1 higher.
         int currentValue = PlayerPrefs.GetInt(whatToUpdate);
         PlayerPrefs.SetInt(whatToUpdate, currentValue + 1);
+        apparentEggCount++;
     }
 
     public int ReturnSaveState(string whatToSend)
@@ -124,26 +134,57 @@ public class SaveAndLoad : MonoBehaviour {
     {
         //Do all the stuff that normally happens when you tally up eggs in the start of the program.
         IncrementSaveState("eggCount");
-        if (PlayerPrefs.GetInt("eggCount") >= 100) //Once Shib has hatched, the increase in size needs to be a little more noticable.
+        if (PlayerPrefs.GetInt("eggCount") >= 200) //Once Shib has hatched, the increase in size needs to be a little more noticable.
         {
-            transform.localScale += new Vector3(0.17f, 0.17f, 0.17f);
+            transform.localScale += new Vector3(0.085f, 0.085f, 0.085f);
         }
         else
         {
-            transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            transform.localScale += new Vector3(0.05f, 0.05f, 0.05f);
         }
         /*Vector3 newScale = transform.localScale;
         newScale *= 1.023f;
         transform.localScale = newScale;*/
         if (alreadyHatched == false)
         {
-            if (PlayerPrefs.GetInt("eggCount") >= 100)
+            if (PlayerPrefs.GetInt("eggCount") >= 200)
             {
                 GameObject itemToLoad = GameObject.Find("EggCharacter");
                 itemToLoad.SetActive(false);
                 alreadyHatched = true;
             }
         }
-        
+
+        Debug.Log(PlayerPrefs.GetInt("eggCount"));
     }
+
+    public void ResyncVisuals() //Use this when an egg is externally added.
+    {
+        //Remove the part that actually increases eggCount.
+        if (PlayerPrefs.GetInt("eggCount") >= 200) //Once Shib has hatched, the increase in size needs to be a little more noticable.
+        {
+            transform.localScale += new Vector3(0.085f, 0.085f, 0.085f);
+        }
+        else
+        {
+            transform.localScale += new Vector3(0.05f, 0.05f, 0.05f);
+        }
+        /*Vector3 newScale = transform.localScale;
+        newScale *= 1.023f;
+        transform.localScale = newScale;*/
+        if (alreadyHatched == false)
+        {
+            if (PlayerPrefs.GetInt("eggCount") >= 200)
+            {
+                GameObject itemToLoad = GameObject.Find("EggCharacter");
+                itemToLoad.SetActive(false);
+                alreadyHatched = true;
+            }
+        }
+
+        Debug.Log(PlayerPrefs.GetInt("eggCount"));
+    }
+
+
+
 }

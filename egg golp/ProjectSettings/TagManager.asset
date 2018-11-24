@@ -6,6 +6,7 @@ TagManager:
   tags:
   - hazard
   - point
+  - player
   layers:
   - Default
   - TransparentFX
