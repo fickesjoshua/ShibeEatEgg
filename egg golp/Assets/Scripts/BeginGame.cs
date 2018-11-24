@@ -5,18 +5,25 @@ using System.Collections.Generic;
 
 public class BeginGame : MonoBehaviour {
     public string firstLevel = "Test Scene";
-    
+    private int startProgress = 0;
 	
     //public int guestsPerArea = 3;
 	// Use this for initialization
 	void Start () {
-        BeginTheGame(true);
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        
-	}
+        if (Input.GetKey(KeyCode.O) && startProgress == 0)
+        {
+            startProgress = 1;
+        }
+        else if (Input.GetKey(KeyCode.K) && startProgress == 1)
+        {
+            BeginTheGame(true);
+        }
+    }
 	
     public void BeginTheGame(bool startNew)
     {
