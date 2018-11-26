@@ -37,11 +37,13 @@ public class BeginGame : MonoBehaviour {
             //MAKE SURE THE LIST HERE MATCHES THE LIST IN SaveAndLoad.cs
             //A child of an object must precede its parent
             saveVariables.Add("eggCount");
+            saveVariables.Add("eggDoorUsed");
             //end adding titles
             
 
 
             PlayerPrefs.SetInt("eggCount", 0);
+            PlayerPrefs.SetInt("eggDoorUsed", 0); //0=false, 1=true
             
 
         }
