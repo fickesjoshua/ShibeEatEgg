@@ -5,9 +5,15 @@ using System.Collections.Generic;
 
 public class BulletHellEggManager : MonoBehaviour {
 
-    public float speed = 2.0f;
     
-	void Start () {
+    public float speed = 2.0f;
+
+    public AudioSource source;
+    public AudioClip pointSound;
+    public float pointVolume = 1;
+
+    void Start () {
+        source = GetComponent<AudioSource>();
         IncrementSaveState("eggCount");
     }
 	
@@ -48,6 +54,7 @@ public class BulletHellEggManager : MonoBehaviour {
 
         if (collision.gameObject.tag == "point")  //I'm also adding the win condition check here since it's so similar to a death check.
         {
+            source.PlayOneShot(pointSound, pointVolume);
             IncrementSaveState("eggCount");
             IncrementSaveState("eggCount");
             IncrementSaveState("eggCount");

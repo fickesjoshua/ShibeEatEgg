@@ -7,7 +7,13 @@ public class TreeEggControl : MonoBehaviour {
 
     Animator animator; //Get ready to get the animator connected to the tree egg.
 
+    public AudioSource source;
+    public AudioClip pointSound;
+    public float pointVolume = 1;
+
+
     void Start () {
+        source = GetComponent<AudioSource>();
         animator = GetComponent<Animator>(); //Get the animator connected to the tree egg.
     }
 	
@@ -36,6 +42,7 @@ public class TreeEggControl : MonoBehaviour {
     void DoTheThing()
     {
         Debug.Log("Debug the thing.");
+        source.PlayOneShot(pointSound, pointVolume);
         animator.SetBool("EggCaught", true); //The egg falls!
     }
 
